@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "postcss main.css -o build/styles.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
     "tailwindcss": "^2.2.16",
     "vite": "^2.6.4"
   }
