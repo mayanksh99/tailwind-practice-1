@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./main.css" rel="stylesheet" />
+    <title>Drum Kit</title>
+  </head>
+
+  <body class="font-sans text-xl bg-hero-pattern bg-cover">
+    <div class="contnr flex flex-1 min-h-screen items-center justify-center">
+      <div
+        data-key="65"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">A</kbd>
+        <span class="text-xl uppercase text-yellow-400">clap</span>
+      </div>
+      <div
+        data-key="83"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">S</kbd>
+        <span class="text-xl uppercase text-yellow-400">hihat</span>
+      </div>
+      <div
+        data-key="68"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">D</kbd>
+        <span class="text-xl uppercase text-yellow-400">kick</span>
+      </div>
+      <div
+        data-key="70"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">F</kbd>
+        <span class="text-xl uppercase text-yellow-400">openhat</span>
+      </div>
+      <div
+        data-key="71"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">G</kbd>
+        <span class="text-xl uppercase text-yellow-400">boom</span>
+      </div>
+      <div
+        data-key="72"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">H</kbd>
+        <span class="text-xl uppercase text-yellow-400">ride</span>
+      </div>
+      <div
+        data-key="74"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">J</kbd>
+        <span class="text-xl uppercase text-yellow-400">snare</span>
+      </div>
+      <div
+        data-key="75"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">K</kbd>
+        <span class="text-xl uppercase text-yellow-400">tom</span>
+      </div>
+      <div
+        data-key="76"
+        class="
+          key
+          rounded-md
+          border-4 border-solid border-black
+          m-4
+          text-2xl
+          pad
+          transition-all
+          duration-300
+          ease-in-out
+          w-40
+          text-center text-white
+          bg-black bg-opacity-50
+        "
+      >
+        <kbd class="block text-6xl">L</kbd>
+        <span class="text-xl uppercase text-yellow-400">tink</span>
+      </div>
+    </div>
+
+    <audio data-key="65" src="sounds/01 - clap.wav"></audio>
+    <audio data-key="83" src="sounds/01 -  hihat.wav"></audio>
+    <audio data-key="68" src="sounds/01 - Drum.wav"></audio>
+    <audio data-key="70" src="sounds/01 - openhat.wav"></audio>
+    <audio data-key="71" src="sounds/01 - boom.wav"></audio>
+    <audio data-key="72" src="sounds/01 - ride.wav"></audio>
+    <audio data-key="74" src="sounds/01 - snare.wav"></audio>
+    <audio data-key="75" src="sounds/01 - tom.wav"></audio>
+    <audio data-key="76" src="sounds/01 - tink.wav"></audio>
+
+    <script>
+      window.addEventListener("keydown", (e) => {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add(
+          "transform",
+          "scale-125",
+          "border-yellow-500",
+          "shadow-2xl"
+        );
+      });
+
+      function removeClass(e) {
+        if (e.propertyName !== "transform") return;
+
+        e.target.classList.remove(
+          "transform",
+          "scale-125",
+          "border-yellow-500",
+          "shadow-2xl"
+        );
+      }
+
+      const keys = document.querySelectorAll(".key");
+      keys.forEach((key) => key.addEventListener("transitionend", removeClass));
+    </script>
+  </body>
+</html>

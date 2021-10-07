@@ -1,0 +1,13 @@
+.pad {
+  padding: 1rem 0.5rem;
+}
+
+.contnr {
+  @apply max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-8;
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
